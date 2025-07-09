@@ -12,8 +12,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::query()->orderBy('created_at', 'desc')->paginate(25);
-        return view ( 'note.index', ['notes' => $notes]);
+        $note = Note::query()->orderBy('created_at', 'desc')->paginate(8);
+        return view('note.index', ['notes' => $note]);
     }
 
     /**
@@ -21,7 +21,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        return view ('note.create');
+        return view('note.create');
     }
 
     /**
@@ -29,7 +29,13 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'note' => ["required", "string"]
+        ]);
+        $data['user_id'] = 1;
+        $note = Note::create($data);
+
+        return to_route('note.show', $note)->with('message', 'note was created successfully');
     }
 
     /**
@@ -37,7 +43,8 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        return view ('note.show');
+
+        return view('note.show', ['note' => $note]);
     }
 
     /**
@@ -45,7 +52,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        return view ('note.edit');
+        return view('note.edit', ['note' => $note]);
     }
 
     /**
@@ -53,7 +60,12 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $data = $request->validate([
+            'note' => ["required", "string"]
+        ]);
+        $note->update($data);
+
+        return to_route('note.show', $note)->with('message', 'note was update');
     }
 
     /**
@@ -61,6 +73,8 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        //
+        $note->delete();
+        
+        return to_route('note.index')->with('message', 'note was deleted successfully');
     }
 }
