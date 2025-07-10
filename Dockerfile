@@ -23,7 +23,7 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Hapus default index.html Apache
-RUN rm /var/www/html/index.html
+RUN rm -f /var/www/html/index.html
 
 # Berikan izin ke Laravel
 RUN chown -R www-data:www-data /var/www/html \
