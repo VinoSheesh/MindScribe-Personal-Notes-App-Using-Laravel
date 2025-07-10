@@ -4,16 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
 
-Route::redirect('/', 'note')->name('dashboard');
+require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'verified'])->group(function () {
-       // Route::get('/note', [NoteController::class, 'index'])->name('note.index');
-   // Route::get('/note/create', [NoteController::class, 'create'])->name('note.create');
-   // Route::post('/note', [NoteController::class, 'store'])->name('note.store');
-   // Route::get('/note/{note}', [NoteController::class, 'show'])->name('note.show');
-   //Route::get('/note/{id}/edit', [NoteController::class, 'edit'])->name('note.edit');
-   // Route::put('/note/{id}', [NoteController::class, 'update'])->name('note.update');
-   //Route::delete('/note/{id}', [NoteController::class, 'destroy'])->name('note.destroy');
+    Route::get('/dashboard', function () {
+        return redirect()->route('note.index');
+    })->name('dashboard');
 
     Route::resource('note', NoteController::class);
 });
@@ -24,4 +20,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
