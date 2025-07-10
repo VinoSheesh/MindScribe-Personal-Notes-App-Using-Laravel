@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../resources/css/app.css">
 @vite('resources/css/app.css')
-<x-layout>
+<x-app-layout>
     <div class="max-w-3xl mx-auto py-8 px-4 font-poppins">
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <!-- Header -->
@@ -33,4 +33,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-app-layout>

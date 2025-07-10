@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../resources/css/app.css">
 @vite('resources/css/app.css')
-<x-layout>
+<x-app-layout>
     <div class="min-h-screen bg-gray-50 py-8 px-4">
         <div class="max-w-2xl mx-auto">
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
@@ -32,4 +32,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-app-layout>

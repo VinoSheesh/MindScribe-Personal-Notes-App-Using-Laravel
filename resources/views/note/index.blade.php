@@ -1,10 +1,9 @@
 <link rel="stylesheet" href="../resources/css/app.css">
 @vite('resources/css/app.css')
-<x-layout>
+<x-app-layout>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Header Section -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6 flex justify-center items-center">MindScribe</h1>
             <a href="{{ route('note.create') }}"
                 class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 hover:from-blue-700 hover:to-purple-700">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,14 +86,10 @@
                 </svg>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No notes yet</h3>
                 <p class="text-gray-500 mb-4">Get started by creating your first note.</p>
-                <a href="{{ route('note.create') }}"
-                    class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                    Create your first note
-                </a>
             </div>
         @endif
         <div class="mt-6">
             {{ $notes->links() }}
         </div>
     </div>
-</x-layout>
+</x-app-layout>
